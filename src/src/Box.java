@@ -40,11 +40,6 @@ public class Box{
 		return warehouse.getName();
 	}
 	
-	public double getWeight()
-	{
-		return this.weight;
-	}
-	
 	
 	//prints out all details of this object
 	@Override

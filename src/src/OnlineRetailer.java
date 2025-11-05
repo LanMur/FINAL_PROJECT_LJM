@@ -30,5 +30,7 @@ public class OnlineRetailer {
 		{
 			warehouse.addBox(warehouse, name, random.nextDouble(1.0, 5.0), random.nextDouble(1.0, 1500.0));
 		}	
+		
+		//warehouse.printInventory();
 	}
 }

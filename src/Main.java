@@ -8,13 +8,18 @@ public class Main {
 
 		Warehouse ups = new Warehouse("United Postal Service", 10000);
 		
-		retailers.createRetailer("Brilliant Plungers", 4);
-		retailers.createRetailer("Super Chess Boards", 4);
-		retailers.createRetailer("Comfy Chairs USA", 2);
+		retailers.createRetailer("Brilliant Plungers", 1);
+		retailers.createRetailer("Super Chess Boards", 1);
+		retailers.createRetailer("Comfy Chairs USA", 1);
+		retailers.createRetailer("Comfy Chairs UK", 1);
 		
 		retailers.testMonthly(ups);
 		
-		ups.printInventory();
+		ups.addVehicle(10000000, 60);
+		ups.addVehicle(10000000, 60);
+		ups.addVehicle(10000000, 60);
+
+		ups.shipAll();
 		
 	}
 

@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 
 public class Warehouse{
-	
    	
 	private ArrayList<Box> inventory = new ArrayList<>();
-	private ArrayList<DeliveryVehicle> vehicles = new ArrayList<>();
 	
 	private String name;
 	private int inventorySize;
-	private int boxCount;
 	
 	//Default Constructor
 	public Warehouse()
@@ -41,53 +38,6 @@ public class Warehouse{
 		{
 			Box newestBox = new Box(warehouse, from, weight, destination);
 			inventory.add(newestBox);	
-			boxCount++;
-		}
-		
-	}
-	
-	public void addVehicle(double capacity, int speed)
-	{
-		DeliveryVehicle vehicle = new DeliveryVehicle(this, capacity, speed);
-		vehicles.add(vehicle);
-	}
-	
-	//sends specified box to available vehicle for delivery
-	private void shipBox(Box box)
-	{
-		for (int i = 0; i < vehicles.size(); i++)
-		{
-			if (vehicles.get(i).getInventoryWeight() + box.getWeight() <= vehicles.get(i).getCapacity())
-			{
-				vehicles.get(i).addBox(box);
-				boxCount--;
-				break;
-			}
-
-			else if (i == vehicles.size() - 1)
-			{
-				System.out.println("Box " + box.toString() + " cannot be shipped! Lack of delivery vehicles!");
-			}
-		}
-		
-		
-	}
-	
-	//Ships all boxes possible
-	public void shipAll()
-	{
-		for (int i = 0; i < inventory.size(); i++)
-		{
-			shipBox(inventory.get(i));
-		}
-		
-		if(boxCount > 0)
-		{
-			System.out.println(boxCount + " boxes at " + name + " have not been shipped!");
-		}
-		else
-		{
-			System.out.println("All boxes at " + name + " have been shipped");
 		}
 		
 	}
