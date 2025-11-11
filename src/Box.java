@@ -12,6 +12,8 @@ public class Box{
 	//destination is the distance from warehouse to destination in miles
 	private double destination;
 	
+	private boolean shipped = false;
+	
 	//Default Constructor
 	public Box()
 	{
@@ -43,6 +45,23 @@ public class Box{
 	public double getWeight()
 	{
 		return this.weight;
+	}
+	
+	public void shipBox()
+	{
+		shipped = true;
+		System.out.println(this + " has been shipped!");
+	}
+	
+	public boolean getShipped()
+	{
+		return shipped;
+	}
+	
+	//returns the distance to destination
+	public double getDestination()
+	{
+		return destination;
 	}
 	
 	

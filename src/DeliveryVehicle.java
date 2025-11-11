@@ -11,6 +11,8 @@ public class DeliveryVehicle {
 	private double capacity;
 	private int speed;
 	
+	private DeliveryDriver driver;
+	
 	//default constructor
 	public DeliveryVehicle()
 	{
@@ -59,6 +61,65 @@ public class DeliveryVehicle {
 	public double getCapacity()
 	{
 		return this.capacity;
+	}
+	
+	//get the delivery driver assigned to this vehicle
+	public DeliveryDriver getDriver()
+	{
+		return driver;
+	}
+	
+	//Create a new driver and assign it to this vehicle
+	public void addDriver(String name, double hourlyPay)
+	{
+		DeliveryDriver driver = new DeliveryDriver(this, name, hourlyPay);
+		this.driver = driver;
+		System.out.println(name + " has been hired for " + hourlyPay + "$ an hour");
+	}
+	
+	//sends the vehicle out for delivery
+	public void deliverItems()
+	{
+		ArrayList<Box> tempInventory = new ArrayList<>();
+		
+		double totalDistance = 0.0;
+		double totalPay = 0.0;
+		
+		for (int i = 0; i < inventory.size(); i++)
+		{
+			double days;
+			Box box;
+			double shippingCost;
+			
+			box = inventory.get(i);
+			
+			days = (double) box.getDestination() / speed / 24.0;
+			days = Math.round(days * 100.0) / 100.0;
+			
+			shippingCost = driver.getPay() * (days * 24.0);
+			shippingCost = Math.round(shippingCost * 100.0) / 100.0;
+			
+			tempInventory.add(box);
+			
+			totalDistance = totalDistance + box.getDestination();
+			totalPay = totalPay + shippingCost;
+			
+			System.out.println(box.toString() + " has been delivered in " + days + " days for $" + shippingCost);
+			
+		}
+		
+		double voyageTime;
+		
+		
+		voyageTime = totalDistance / speed / 24.0;
+		voyageTime = Math.round(voyageTime * 100.0) / 100.0;
+		
+		totalPay = Math.round(totalPay * 100.0) /100.0;
+		
+		
+		
+		System.out.println(driver.getName() + " has completed his voyage in " + voyageTime + " days, making $" + format(totalPay));
+		inventory.removeAll(tempInventory);
 	}
 	
 	
