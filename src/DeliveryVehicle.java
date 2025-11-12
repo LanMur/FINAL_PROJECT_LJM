@@ -74,7 +74,7 @@ public class DeliveryVehicle {
 	{
 		DeliveryDriver driver = new DeliveryDriver(this, name, hourlyPay);
 		this.driver = driver;
-		System.out.println(name + " has been hired for " + hourlyPay + "$ an hour");
+		//System.out.println(name + " has been hired for " + hourlyPay + "$ an hour");
 	}
 	
 	//sends the vehicle out for delivery
@@ -84,6 +84,7 @@ public class DeliveryVehicle {
 		
 		double totalDistance = 0.0;
 		double totalPay = 0.0;
+		double voyageTime;
 		
 		for (int i = 0; i < inventory.size(); i++)
 		{
@@ -104,11 +105,18 @@ public class DeliveryVehicle {
 			totalDistance = totalDistance + box.getDestination();
 			totalPay = totalPay + shippingCost;
 			
-			System.out.println(box.toString() + " has been delivered in " + days + " days for $" + shippingCost);
+			voyageTime = totalDistance / speed / 24.0;
+			voyageTime = Math.round(voyageTime * 100.0) / 100.0;
+			
+			if(box.getFrom() == "Consumer")
+			{
+				System.out.println(box.toString() + " has been delivered in " + voyageTime + " days for $" + shippingCost);
+			}
+			
 			
 		}
 		
-		double voyageTime;
+		
 		
 		
 		voyageTime = totalDistance / speed / 24.0;
@@ -118,7 +126,7 @@ public class DeliveryVehicle {
 		
 		
 		
-		System.out.println(driver.getName() + " has completed his voyage in " + voyageTime + " days, making $" + format(totalPay));
+		//System.out.println(driver.getName() + " has completed his voyage in " + voyageTime + " days, making $" + String.format("" + totalPay));
 		inventory.removeAll(tempInventory);
 	}
 	

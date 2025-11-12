@@ -74,6 +74,17 @@ public class Warehouse{
 		
 	}
 	
+	public void shipConsumerBox()
+	{
+		for (int i = 0; i < inventory.size(); i++)
+		{
+			if (inventory.get(i).getFrom() == "Consumer" && inventory.get(i).getShipped() == false)
+			{
+				shipBox(inventory.get(i));
+			}
+		}
+	}
+	
 	//Ships all boxes possible
 	public void shipAll()
 	{
@@ -106,7 +117,7 @@ public class Warehouse{
 		//remove all items from inventory that have been shipped
 		
 		inventory.removeAll(tempInventory);
-		printInventory();
+		
 		
 	}
 	

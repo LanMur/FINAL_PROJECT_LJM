@@ -50,7 +50,11 @@ public class Box{
 	public void shipBox()
 	{
 		shipped = true;
-		System.out.println(this + " has been shipped!");
+		if (from == "Consumer")
+		{
+			System.out.println(this + " has been shipped!");
+		}
+		
 	}
 	
 	public boolean getShipped()
@@ -62,6 +66,11 @@ public class Box{
 	public double getDestination()
 	{
 		return destination;
+	}
+	
+	public String getFrom()
+	{
+		return from;
 	}
 	
 	
