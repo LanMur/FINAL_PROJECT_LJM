@@ -18,7 +18,6 @@ public class Box{
 	public Box()
 	{
 		warehouse = null;
-		name = "Unknown origin";
 		weight = 1.0;
 		destination = 500.0;
 	}
@@ -36,17 +35,37 @@ public class Box{
 		this.destination = Math.round(this.destination * 100.0) / 100.0;
 	}
 	
+	public void setStats(Warehouse warehouse, String from, double weight, double destination)
+	{
+		this.warehouse = warehouse;
+		this.from = from;
+		
+		this.weight = weight;
+		this.weight = Math.round(this.weight * 100.0) / 100.0;
+		
+		this.destination = destination;
+		this.destination = Math.round(this.destination * 100.0) / 100.0;
+	}
+	
 	//Returns the name of the warehouse this box is located in
 	public String getParent()
 	{
 		return warehouse.getName();
 	}
 	
+	//returns this object
+	public Box getBox()
+	{
+		return this;
+	}
+	
+	//returns the weight of this box
 	public double getWeight()
 	{
 		return this.weight;
 	}
 	
+	//ship this current box
 	public void shipBox()
 	{
 		shipped = true;
@@ -57,6 +76,7 @@ public class Box{
 		
 	}
 	
+	//returns whether this box has been shipped
 	public boolean getShipped()
 	{
 		return shipped;
@@ -68,11 +88,18 @@ public class Box{
 		return destination;
 	}
 	
+	//returns the origin of this box
 	public String getFrom()
 	{
 		return from;
 	}
 	
+	
+	//method called when box has been delivered
+	public void deliverBox(double days)
+	{
+		
+	}
 	
 	//prints out all details of this object
 	@Override

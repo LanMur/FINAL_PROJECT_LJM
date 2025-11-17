@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+//Rename file to "Application"
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -9,7 +11,7 @@ public class Main {
 		
 		Retailers retailers = new Retailers();
 		
-		System.out.println("Would you like to use the program as a \"Manager\" or \"Consumer\"?");
+		System.out.println("Would you like to use the program as a \"manager\" or \"consumer\"?");
 		
 		String userInput;
 		boolean inMenu = true;
@@ -21,15 +23,16 @@ public class Main {
 		while(inMenu == true)
 		{
 			userInput = scnr.next();
+			userInput = userInput.toLowerCase();
 			
-			if (userInput.compareTo("Manager") == 0)
+			if (userInput.compareTo("manager") == 0)
 			{
 				System.out.println("Entered program as a manager\n");
 				manager = new Manager();
 				
 				inMenu = false;
 			}
-			else if (userInput.compareTo("Consumer") == 0)
+			else if (userInput.compareTo("consumer") == 0)
 			{
 				System.out.println("Entered program as a consumer\n");
 				consumer = new Consumer();
@@ -39,32 +42,10 @@ public class Main {
 			
 			else
 			{
-				System.out.println("Please enter either \"Manager\" or \"Consumer\"");
+				System.out.println("Please enter either \"manager\" or \"consumer\"");
 			}
 			
 		}
-
-		
-		
-		
-		
-		
-		/*Warehouse ups = new Warehouse("United Postal Service", 10000);
-		
-		retailers.createRetailer("Brilliant Plungers", 49);
-		retailers.createRetailer("Super Chess Boards", 10);
-		retailers.createRetailer("Comfy Chairs USA", 1);
-		retailers.createRetailer("Comfy Chairs UK", 1);
-		
-		retailers.testMonthly(ups);
-		
-		ups.addVehicle(3000, 60);
-		ups.hireDriver("Abdul Patel", 10.0);
-		
-		ups.shipAll();
-		ups.deliverItems();
-		*/
-		
 		
 	}
 

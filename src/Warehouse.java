@@ -46,6 +46,22 @@ public class Warehouse{
 		
 	}
 	
+	//adds a box with an animal in it into the inventory
+	public void addAnimal(Warehouse warehouse, String from, double weight, double destination, String animalName, int maxBoxTime)
+	{
+		if (inventory.size() >= inventorySize)
+		{
+			System.out.println("Inventory full, cannot take in order");
+		}
+		else
+		{
+			Box newestBox = new Animal(warehouse, from, weight, destination, animalName, maxBoxTime);
+			inventory.add(newestBox);	
+			boxCount++;
+		}
+	}
+	
+	//adds a new vehicle to the warehouse fleet
 	public void addVehicle(double capacity, int speed)
 	{
 		DeliveryVehicle vehicle = new DeliveryVehicle(this, capacity, speed);
@@ -74,6 +90,7 @@ public class Warehouse{
 		
 	}
 	
+	//ships a box sent by a Consumer
 	public void shipConsumerBox()
 	{
 		for (int i = 0; i < inventory.size(); i++)
@@ -83,6 +100,7 @@ public class Warehouse{
 				shipBox(inventory.get(i));
 			}
 		}
+		clearShippedBoxes();
 	}
 	
 	//Ships all boxes possible
@@ -102,23 +120,30 @@ public class Warehouse{
 			System.out.println("All boxes at " + name + " have been shipped");
 		}
 		
+		clearShippedBoxes();
+		
+		
+		
+	}
+	
+	//removes all boxes in inventory that have been shipped.
+	public void clearShippedBoxes()
+	{
 		//creates tempInventory before removing boxes that have been shipped
-		ArrayList<Box> tempInventory = new ArrayList<>();
-		
-		//remove boxes that have been shipped from inventory
-		for (int i = 0; i < inventory.size(); i++)
-		{
-			if (inventory.get(i).getShipped())
-			{
-				tempInventory.add(inventory.get(i));
-			}
-		}
-		
-		//remove all items from inventory that have been shipped
-		
-		inventory.removeAll(tempInventory);
-		
-		
+				ArrayList<Box> tempInventory = new ArrayList<>();
+				
+				//remove boxes that have been shipped from inventory
+				for (int i = 0; i < inventory.size(); i++)
+				{
+					if (inventory.get(i).getShipped())
+					{
+						tempInventory.add(inventory.get(i));
+					}
+				}
+				
+				//remove all items from inventory that have been shipped
+				
+				inventory.removeAll(tempInventory);
 	}
 	
 	public void hireDriver(String name, double hourlyPay)

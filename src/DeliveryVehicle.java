@@ -113,6 +113,8 @@ public class DeliveryVehicle {
 				System.out.println(box.toString() + " has been delivered in " + voyageTime + " days for $" + shippingCost);
 			}
 			
+			box.deliverBox(days);
+			
 			
 		}
 		
