@@ -43,10 +43,4 @@ public class Animal extends Box {
 		super.shipBox();
 	}
 	
-	@Override
-	public String toString()
-	{
-		return animalName;
-	}
-	
 }

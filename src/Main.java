@@ -11,12 +11,11 @@ public class Main {
 		
 		Retailers retailers = new Retailers();
 		
-		System.out.println("Would you like to use the program as a \"manager\" or \"consumer\"?");
+		System.out.println("Would you like to enter the program \"yes\" or \"no\"?");
 		
 		String userInput;
 		boolean inMenu = true;
-		
-		Manager manager;
+	
 		Consumer consumer;
 		
 		//user selects which mode the program will run in
@@ -25,24 +24,19 @@ public class Main {
 			userInput = scnr.next();
 			userInput = userInput.toLowerCase();
 			
-			if (userInput.compareTo("manager") == 0)
+			if (userInput.compareTo("yes") == 0 || userInput.compareTo("y") == 0)
 			{
-				System.out.println("Entered program as a manager\n");
-				manager = new Manager();
-				
-				inMenu = false;
-			}
-			else if (userInput.compareTo("consumer") == 0)
-			{
-				System.out.println("Entered program as a consumer\n");
+				System.out.println("Entered program");
 				consumer = new Consumer();
-				
-				inMenu = false;
+			}
+			else if (userInput.compareTo("no") == 0 || userInput.compareTo("n") == 0)
+			{
+				System.out.println("Have a good day\n");
 			}
 			
 			else
 			{
-				System.out.println("Please enter either \"manager\" or \"consumer\"");
+				System.out.println("Please enter either \"yes\" or \"no\"");
 			}
 			
 		}

@@ -14,6 +14,9 @@ public class DeliveryVehicle {
 	private DeliveryDriver driver;
 	
 	//default constructor
+	/**
+	 * 
+	 */
 	public DeliveryVehicle()
 	{
 		warehouse = null;
@@ -22,6 +25,11 @@ public class DeliveryVehicle {
 	}
 	
 	//preferred constructor
+	/**
+	 * @param warehouse
+	 * @param capacity
+	 * @param speed
+	 */
 	public DeliveryVehicle(Warehouse warehouse, double capacity, int speed)
 	{
 		this.warehouse = warehouse;
@@ -30,8 +38,12 @@ public class DeliveryVehicle {
 	}
 	
 	//adds a box to the inventory if there is room and increases inventoryWeight.
+	/**
+	 * @param box
+	 */
 	public void addBox(Box box)
 	{
+		//if the vehicle has enough room for the box, it is added
 		if (inventoryWeight + box.getWeight() <= capacity)
 		{
 			inventory.add(box);
@@ -45,6 +57,9 @@ public class DeliveryVehicle {
 	}
 	
 	//removes box from inventory and decreases inventory weight
+	/**
+	 * @param box
+	 */
 	public void removeBox(Box box)
 	{
 		inventory.remove(box);
@@ -52,24 +67,37 @@ public class DeliveryVehicle {
 	}
 
 	//returns inventoryWeight
+	/**
+	 * @return
+	 */
 	public double getInventoryWeight()
 	{
 		return this.inventoryWeight;
 	}
 	
 	//returns capacity
+	/**
+	 * @return
+	 */
 	public double getCapacity()
 	{
 		return this.capacity;
 	}
 	
 	//get the delivery driver assigned to this vehicle
+	/**
+	 * @return
+	 */
 	public DeliveryDriver getDriver()
 	{
 		return driver;
 	}
 	
 	//Create a new driver and assign it to this vehicle
+	/**
+	 * @param name
+	 * @param hourlyPay
+	 */
 	public void addDriver(String name, double hourlyPay)
 	{
 		DeliveryDriver driver = new DeliveryDriver(this, name, hourlyPay);
@@ -78,6 +106,9 @@ public class DeliveryVehicle {
 	}
 	
 	//sends the vehicle out for delivery
+	/**
+	 * 
+	 */
 	public void deliverItems()
 	{
 		ArrayList<Box> tempInventory = new ArrayList<>();
@@ -86,6 +117,7 @@ public class DeliveryVehicle {
 		double totalPay = 0.0;
 		double voyageTime;
 		
+		//delivers each box individually
 		for (int i = 0; i < inventory.size(); i++)
 		{
 			double days;
@@ -94,25 +126,32 @@ public class DeliveryVehicle {
 			
 			box = inventory.get(i);
 			
+			//sets the amount of time it took to deliver the box
 			days = (double) box.getDestination() / speed / 24.0;
 			days = Math.round(days * 100.0) / 100.0;
 			
+			//calculates the amount it cost to deliver the box
 			shippingCost = driver.getPay() * (days * 24.0);
 			shippingCost = Math.round(shippingCost * 100.0) / 100.0;
 			
+			//adds the box to the tempInventory to be removed after all boxes have been shipped
 			tempInventory.add(box);
 			
+			//adds to the totalDistance and totalPay of this trip
 			totalDistance = totalDistance + box.getDestination();
 			totalPay = totalPay + shippingCost;
 			
+			//adds to the total amount of time this vehicle has been on its trip
 			voyageTime = totalDistance / speed / 24.0;
 			voyageTime = Math.round(voyageTime * 100.0) / 100.0;
 			
+			//prints a message saying the box has been delivered if it has been shipped by the user.
 			if(box.getFrom() == "Consumer")
 			{
 				System.out.println(box.toString() + " has been delivered in " + voyageTime + " days for $" + shippingCost);
 			}
 			
+			//tells the box it has been delivered
 			box.deliverBox(days);
 			
 			
@@ -129,6 +168,7 @@ public class DeliveryVehicle {
 		
 		
 		//System.out.println(driver.getName() + " has completed his voyage in " + voyageTime + " days, making $" + String.format("" + totalPay));
+		//removes all boxes that have been delivered from the inventory.
 		inventory.removeAll(tempInventory);
 	}
 	

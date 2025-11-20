@@ -15,6 +15,9 @@ public class Box{
 	private boolean shipped = false;
 	
 	//Default Constructor
+	/**
+	 * 
+	 */
 	public Box()
 	{
 		warehouse = null;
@@ -23,6 +26,12 @@ public class Box{
 	}
 	
 	//Preferred Constructor
+	/**
+	 * @param warehouse
+	 * @param from
+	 * @param weight
+	 * @param destination
+	 */
 	public Box(Warehouse warehouse, String from, double weight, double destination)
 	{
 		this.warehouse = warehouse;
@@ -35,6 +44,12 @@ public class Box{
 		this.destination = Math.round(this.destination * 100.0) / 100.0;
 	}
 	
+	/**
+	 * @param warehouse
+	 * @param from
+	 * @param weight
+	 * @param destination
+	 */
 	public void setStats(Warehouse warehouse, String from, double weight, double destination)
 	{
 		this.warehouse = warehouse;
@@ -48,24 +63,36 @@ public class Box{
 	}
 	
 	//Returns the name of the warehouse this box is located in
+	/**
+	 * @return
+	 */
 	public String getParent()
 	{
 		return warehouse.getName();
 	}
 	
 	//returns this object
+	/**
+	 * @return
+	 */
 	public Box getBox()
 	{
 		return this;
 	}
 	
 	//returns the weight of this box
+	/**
+	 * @return
+	 */
 	public double getWeight()
 	{
 		return this.weight;
 	}
 	
 	//ship this current box
+	/**
+	 * 
+	 */
 	public void shipBox()
 	{
 		shipped = true;
@@ -77,18 +104,27 @@ public class Box{
 	}
 	
 	//returns whether this box has been shipped
+	/**
+	 * @return
+	 */
 	public boolean getShipped()
 	{
 		return shipped;
 	}
 	
 	//returns the distance to destination
+	/**
+	 * @return
+	 */
 	public double getDestination()
 	{
 		return destination;
 	}
 	
 	//returns the origin of this box
+	/**
+	 * @return
+	 */
 	public String getFrom()
 	{
 		return from;
@@ -96,12 +132,18 @@ public class Box{
 	
 	
 	//method called when box has been delivered
+	/**
+	 * @param days
+	 */
 	public void deliverBox(double days)
 	{
 		
 	}
 	
 	//prints out all details of this object
+	/**
+	 *
+	 */
 	@Override
 	public String toString()
 	{

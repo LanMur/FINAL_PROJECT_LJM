@@ -10,6 +10,9 @@ public class OnlineRetailer {
 	private int ordersPerMonth;
 	
 	//Default Constructor
+	/**
+	 * 
+	 */
 	public OnlineRetailer()
 	{
 		this.name = "Generic Online Retailer";
@@ -17,6 +20,10 @@ public class OnlineRetailer {
 	}
 	
 	//Preferred Constructor
+	/**
+	 * @param name
+	 * @param ordersPerMonth
+	 */
 	public OnlineRetailer(String name, int ordersPerMonth)
 	{
 		this.name = name;
@@ -24,6 +31,9 @@ public class OnlineRetailer {
 	}
 	
 	//adds a number of orders based on monthly orders to a warehouse
+	/**
+	 * @param warehouse
+	 */
 	public void testRetailer(Warehouse warehouse)
 	{
 		for(int i = 0; i < ordersPerMonth; i++)
