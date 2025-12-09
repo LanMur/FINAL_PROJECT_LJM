@@ -158,14 +158,17 @@ public class Consumer {
 				
 				//user inputs the animals name
 				System.out.println("Please enter animal's name");
-				
-				try
+				while(true)
 				{
-					animalName = scnr2.next();
-				}
-				catch(InputMismatchException exception)
-				{
-					System.out.println("Please enter animal Name");
+					try
+					{
+						animalName = scnr2.next();
+						break;
+					}
+					catch(InputMismatchException exception)
+					{
+						System.out.println("Please enter animal Name");
+					}
 				}
 				
 				//user inputs the max time the animal is allowed in the box
